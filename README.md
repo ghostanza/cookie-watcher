@@ -28,7 +28,10 @@ a.triggerCustomEvent('test', { foo: 'bar' });
 - Uses the `readCookie()` function to check the value of the provided `cookieName`.
 - Then kicks off a `setInterval` and checks the cookie value every `freq`ms (defaults to 100ms).
 - If the cookie value has changed, it triggers a custom `cookieChange` event on the object that set the watcher.
-- The event passes the cookie name and the value to the `event.detail` object.
+- The event passes the cookie name, the new value, and the previous value to the `event.detail` object.
+  - `event.detail.name` = cookie name
+  - `event.detail.value` = new value
+  - `event.detaul.previous` = old value
 
 **Example**:
 ```
