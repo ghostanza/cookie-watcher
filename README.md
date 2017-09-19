@@ -48,3 +48,18 @@ a.cookieWatcher('test', 300);
 // console logs "test" and undefined
 ```
 
+### EXAMPLE:
+*Set up an element to listen for a particular cookie change ('testCookie'), and update a data attribute when that cookie changes*
+```
+// Load the cookie-watcher script, and then...
+
+let el = document.getElementById('test-element');
+
+el.addEventListener('cookieChange', function(e){
+  if( e.value != undefined ){
+    this.dataset.cookieHasChangedTo = e.value;
+  }
+});
+
+el.cookieWatcher('testCookie');
+```
