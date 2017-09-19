@@ -67,9 +67,9 @@ a.cookieWatcher('test', 300);
 let el = document.getElementById('test-element');
 
 el.addEventListener('cookieChange', function(e){
-  if( e.value != undefined ){
+  if( e.value ){
     this.dataset.cookieHasChangedTo = e.value;
-  } else{
+  } else if( !e.value && e.previous ){
     this.dataset.cookieHasExpired = true;
   }
 });
@@ -84,9 +84,9 @@ el.cookieWatcher('testCookie');
 let el = document.getElementById('test-element');
 
 el.cookieWatcher('testCookie', function(data, target){
-  if( data.value != undefined ){
+  if( data.value ){
     target.dataset.cookieHasChangedTo = data.value;
-  } else{
+  } else if( !data.value && data.previous ){
     target.dataset.cookieHasExpired = true;
   }
 });
