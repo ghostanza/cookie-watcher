@@ -48,6 +48,8 @@ a.cookieWatcher('test', 300);
 // console logs "test" and undefined
 ```
 
+---
+
 ### EXAMPLE:
 *Set up an element to listen for a particular cookie change ('testCookie'), and update a data attribute when that cookie changes*
 ```
