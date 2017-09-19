@@ -12,7 +12,7 @@ Allow DOM elements to listen for cookie changes
 - *This will also be set on the `window` object if it does not already have its own `readCookie` function, so you can use it globally if you want*
 
 ### `Object.prototype.triggerCustomEvent(name, data)`
-- Triggers a custom event on the given object.
+- Creates and triggers a custom event on the given object.
 - The data passed gets set as the `event.detail` value.
 
 **Example**:
