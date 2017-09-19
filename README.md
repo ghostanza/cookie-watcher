@@ -32,9 +32,9 @@ a.triggerCustomEvent('test', { foo: 'bar' });
   - `event.detail.name` = cookie name
   - `event.detail.value` = new value
   - `event.detail.previous` = old value
-- `func` is an optional callback function that can be passed. *(If you do not supply a `freq` value, it can also be passed as the second parameter)*. If this is present, it will be called *instead* of emitting an event. It will receive the `data` (the same as the `event.detail` object above), and the `target` object (the object that original set the `cookieWatcher`).
-  - *Ex A:* `el.cookieWatcher('testCookie', 200, function(data, element){ console.log(data.name) });`
-  - *Ex B:* `el.cookieWatcher('testCookie', function(data, element){ console.log(data.name) });`
+- `func` is an optional callback function that can be passed. *(If you do not supply a `freq` value, it can also be passed as the second parameter)*. If this is present, it will be called *instead* of emitting an event. It will receive the `data` (the same as the `event.detail` object above), and the `target` object (the object/element that originally set the `cookieWatcher`).
+  - *Ex A:* `el.cookieWatcher('testCookie', 200, function(data, target){ console.log(data.name) });`
+  - *Ex B:* `el.cookieWatcher('testCookie', function(data, target){ console.log(data.name) });`
 
 **Example**:
 ```
