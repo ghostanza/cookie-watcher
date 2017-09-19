@@ -11,6 +11,8 @@
     return cookieVal;
   }
 
+  window.readCookie = window.readCookie || readCookie;
+
   Object.prototype.triggerCustomEvent = function(name, data){
     let event;
     if( window.CustomEvent ){
