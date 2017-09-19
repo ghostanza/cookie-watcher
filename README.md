@@ -31,7 +31,7 @@ a.triggerCustomEvent('test', { foo: 'bar' });
 - The event passes the cookie name, the new value, and the previous value to the `event.detail` object.
   - `event.detail.name` = cookie name
   - `event.detail.value` = new value
-  - `event.detaul.previous` = old value
+  - `event.detail.previous` = old value
 
 **Example**:
 ```
