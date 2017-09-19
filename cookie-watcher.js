@@ -24,15 +24,23 @@
     this.dispatchEvent(event);
   }
 
-  Object.prototype.cookieWatcher = function (cookieName, freq){
+  Object.prototype.cookieWatcher = function (cookieName, freq, func){
     let c = readCookie(cookieName),
-        time = freq || 100,
+        argLength = arguments.length,
+        time = !isNaN(arguments[1]) ? freq : 100,
+        callback = (argLength == 2 && typeof(arguments[1])) === 'function' ? arguments[1]
+          : (argLength >= 2 && typeof(func) === 'function') ? func : undefined,
         that = this;
 
     setInterval(function(){
       let a = readCookie(cookieName);
       if( a != c ){
-        that.triggerCustomEvent('cookieChange', {name: cookieName, value: a, previous: c});
+        let data = { name: cookieName, value: a, previous: c };
+        if(callback){
+          callback(data, that);
+        }else{
+          that.triggerCustomEvent('cookieChange', {name: cookieName, value: a, previous: c});
+        }
         c = a;
       }
     }, time);
