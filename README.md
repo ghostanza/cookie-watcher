@@ -27,7 +27,7 @@ a.triggerCustomEvent('test', { foo: 'bar' });
 ### `Object.prototype.cookieWatcher(cookieName, freq)`
 - Uses the `readCookie()` function to check the value of the provided `cookieName`.
 - Then kicks off a `setInterval` and checks the cookie value every `freq`ms (defaults to 100ms).
-- If the cookie value has changed, it triggers a custom `cookieChange` event on the object that set the watcher.
+- If the cookie value has changed, it triggers a custom `cookieChange` event on the object that set the watcher and then continues to listen for cookie changes with the new value.
 - The event passes the cookie name, the new value, and the previous value to the `event.detail` object.
   - `event.detail.name` = cookie name
   - `event.detail.value` = new value
@@ -74,3 +74,4 @@ el.cookieWatcher('testCookie');
 
 ## TODO:
 - Update the `cookieWatcher` to use a Web Worker if available in order to take the `setInterval` off the main thread
+- Add a way to stop listening for cookie changes after a `cookieWatcher` has been set (possibly add a flag to the call to indicate whether it should be a one-time watcher or continuously listen for changes).
