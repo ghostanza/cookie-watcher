@@ -7,10 +7,10 @@ Allow DOM elements to listen for cookie changes
 - Lastly, it creates a new `Object.prototype` function called `triggerCustomEvent` that is responsible for creating and emitting the custom event.
 
 
-### readCookie()
+### `readCookie(cookieName)`
 - Takes a cookie name to look for, and returns its value (or `undefined` if it does not have one)
 
-### Object.prototype.triggerCustomEvent(name, data)
+### `Object.prototype.triggerCustomEvent(name, data)`
 - Triggers a custom event on the given object.
 - The data passed gets set as the `event.detail` value.
 
@@ -23,7 +23,7 @@ a.addEventListener('test', function(e){
 a.triggerCustomEvent('test', { foo: 'bar' });
 ```
 
-### Object.prototype.cookieWatcher(cookieName, freq)
+### `Object.prototype.cookieWatcher(cookieName, freq)`
 - Uses the `readCookie()` function to check the value of the provided `cookieName`.
 - Then kicks off a `setInterval` and checks the cookie value every `freq`ms (defaults to 100ms).
 - If the cookie value has changed, it triggers a custom `cookieChange` event on the object that set the watcher.
@@ -65,3 +65,6 @@ el.addEventListener('cookieChange', function(e){
 
 el.cookieWatcher('testCookie');
 ```
+
+## TODO:
+- Update the `cookieWatcher` to use a Web Worker if available in order to take the `setInterval` off the main thread
