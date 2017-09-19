@@ -32,7 +32,7 @@
     setInterval(function(){
       let a = readCookie(cookieName);
       if( a != c ){
-        that.triggerCustomEvent('cookieChange', {name: cookieName, value: a});
+        that.triggerCustomEvent('cookieChange', {name: cookieName, value: a, previous: c});
         c = a;
       }
     }, time);
