@@ -75,3 +75,4 @@ el.cookieWatcher('testCookie');
 ## TODO:
 - Update the `cookieWatcher` to use a Web Worker if available in order to take the `setInterval` off the main thread
 - Add a way to stop listening for cookie changes after a `cookieWatcher` has been set (possibly add a flag to the call to indicate whether it should be a one-time watcher or continuously listen for changes).
+- Allow `cookieWatcher` to take an option callback parameter that will fire instead of triggering the custom event
