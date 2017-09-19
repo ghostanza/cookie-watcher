@@ -64,6 +64,8 @@ let el = document.getElementById('test-element');
 el.addEventListener('cookieChange', function(e){
   if( e.value != undefined ){
     this.dataset.cookieHasChangedTo = e.value;
+  } else{
+    this.dataset.cookieHasExpired = true;
   }
 });
 
