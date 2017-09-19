@@ -24,7 +24,7 @@ a.addEventListener('test', function(e){
 a.triggerCustomEvent('test', { foo: 'bar' });
 ```
 
-### `Object.prototype.cookieWatcher(cookieName, freq)`
+### `Object.prototype.cookieWatcher(cookieName, freq, func)`
 - Uses the `readCookie()` function to check the value of the provided `cookieName`.
 - Then kicks off a `setInterval` and checks the cookie value every `freq`ms (defaults to 100ms).
 - If the cookie value has changed, it triggers a custom `cookieChange` event on the object that set the watcher and then continues to listen for cookie changes with the new value.
@@ -32,6 +32,9 @@ a.triggerCustomEvent('test', { foo: 'bar' });
   - `event.detail.name` = cookie name
   - `event.detail.value` = new value
   - `event.detail.previous` = old value
+- `func` is an optional callback function that can be passed. *(If you do not supply a `freq` value, it can also be passed as the second parameter)*. If this is present, it will be called *instead* of emitting an event. It will receive the `data` (the same as the `event.detail` object above), and the `target` object (the object that original set the `cookieWatcher`).
+  - *Ex A:* `el.cookieWatcher('testCookie', 200, function(data, element){ console.log(data.name) });`
+  - *Ex B:* `el.cookieWatcher('testCookie', function(data, element){ console.log(data.name) });`
 
 **Example**:
 ```
